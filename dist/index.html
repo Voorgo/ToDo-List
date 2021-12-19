@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="#">
+  </head>
+  <body>
+    <section class="main">
+      <header>
+        <h1>To-Do</h1>
+        <span class="current">{Menu}</span>
+        <span class="ham-menu"></span>
+      </header>
+      <div class="content">
+      </div>
+      <nav class="nav-bar">
+        <ul>
+          <li class="underline"><span class="home js-nav-btns">Home</span></li>
+          <li class="underline"><span class="today js-nav-btns">Today</span></li>
+          <li class="underline"><span class="week js-nav-btns">Week</span></li>
+          <li class="underline"><span class="imp js-nav-btns">Important</span></li>
+        </ul>
+      </nav>
+    </section>
+    <section class="task-section form-section">
+      <form id="task-form">
+          <h2>Add new Todo</h2>
+          <span class="close-form"></span>
+        <label>
+          Title*
+          <input type="text" placeholder="To-Do Title" required class="task-title" maxlength="40"/>
+        </label>
+        <label>
+          Description*
+          <input type="text" placeholder="To-Do description" required class="task-description"/>
+        </label>
+        <label>
+          Due Date*
+          <input type="date" class="task-date" required/>
+        </label>
+        <div class="form-div">
+          Priority
+          <label>
+            <input type="radio" name="prior" value="low" />
+            Low
+          </label>
+          <label>
+            <input type="radio" name="prior" value="medium" />
+            Medium
+          </label>
+          <label>
+            <input type="radio" name="prior" value="high" />
+            High
+          </label>
+        <button>Add Todo</button>
+      </form>
+    </section>
+    <div class="task-info info">
+    <div class="taskOption taskDetails">
+      <span class="close-description"></span>
+      <p class="task-description"><div >Description:</div></p>
+    </div>
+  </div>
+    <div class="task-info edit-task">
+    <div class="change-task">
+      <label>
+        New title
+      <input type="text" placeholder="Title" class="newTitle">
+    </label>
+    <label>
+      New description
+      <input type="text" placeholder="Description" class="newDescription">
+    </label>
+    <label>
+      New date
+      <input type="date" class="newDate">
+    </label>
+      <button class="confirm">Confirm</button>
+    </div>
+    </div>
+    <div class="addToDo">
+      <span class="material-icons"> close </span>
+    </div>
+  </body>
+</html>
