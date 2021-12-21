@@ -4,10 +4,10 @@ export class UI {
     static tasks = [];
 
    static createTask(task) {
-        let date = new Date(task.dueDate)
+        let date = new Date(task.dueDate);
         const content = document.querySelector('.content');
         const card = document.createElement('div');
-        card.classList.add('card')
+        card.classList.add('card');
         card.innerHTML = `
         <div class="first">
           <div class="title">${task.title}</div>
@@ -18,7 +18,7 @@ export class UI {
           <img src="img/edit.svg" alt="edit" class="edit">
           <img src="img/trash.svg" alt="delete" class="del">
           <div class="${task.priority}"></div>
-        `
+        `;
         content.append(card);
     }
 
@@ -30,13 +30,13 @@ export class UI {
     }
 
      static loadTasks(task) {
-      document.querySelector('.content').innerHTML = ''
-      task.forEach(task => this.createTask(task))
+      document.querySelector('.content').innerHTML = '';
+      task.forEach(task => this.createTask(task));
     }
   
     static addTask(newTask) {
         if(this.tasks.find(task => task.title === newTask.getName())) return;
-        this.tasks.push(newTask)
+        this.tasks.push(newTask);
       }
 
     static deleteTask(index, menu) {
@@ -86,7 +86,7 @@ export class UI {
   
         if(date) UI.today()[index].dueDate = parseISO(date);
 
-        UI.loadTasks(UI.today())
+        UI.loadTasks(UI.today());
       }
 
       else if(menu === 'imp') {
@@ -96,7 +96,7 @@ export class UI {
   
         if(date) UI.important()[index].dueDate = parseISO(date);
 
-        UI.loadTasks(UI.important())
+        UI.loadTasks(UI.important());
       }
 
       else if(menu === 'week') {
@@ -106,7 +106,7 @@ export class UI {
   
         if(date) UI.week()[index].dueDate = parseISO(date);
 
-        UI.loadTasks(UI.week())
+        UI.loadTasks(UI.week());
       }
 
       else {
@@ -122,7 +122,7 @@ export class UI {
 
     static important() {
       let impTask = UI.tasks.filter(task => task.priority === 'high');
-      return impTask
+      return impTask;
     }
 
     static today() {

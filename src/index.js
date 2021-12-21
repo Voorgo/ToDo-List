@@ -1,5 +1,5 @@
 import {Task} from './task';
-import {UI} from './ui'
+import {UI} from './ui';
 
 let index;
 let menu = 'menu';
@@ -9,12 +9,12 @@ let todos = JSON.parse(localStorage.getItem('todos'));
 
 //Open-close the menu
 document.querySelector('.ham-menu').addEventListener('click', () => {
-    document.querySelector('.nav-bar').classList.toggle('closed')
+    document.querySelector('.nav-bar').classList.toggle('closed');
 });
 
 //Open form section
 document.querySelector('.addToDo').addEventListener('click', () => {
-    document.querySelector('.form-section').classList.toggle('active')
+    document.querySelector('.form-section').classList.toggle('active');
 });
 
 
@@ -32,7 +32,7 @@ document.querySelector('#task-form').addEventListener('submit', (e) => {
     }
 
     else {
-        const task = new Task(title.value, description.value, dueDate.value, priority = 'notSpecified')
+        const task = new Task(title.value, description.value, dueDate.value, priority = 'notSpecified');
         UI.addTask(task);
         UI.clearInput(title, description, dueDate, priority);
     }
@@ -56,7 +56,7 @@ document.querySelector('#task-form').addEventListener('submit', (e) => {
     else if(menu === 'today') {
         UI.loadTasks(UI.today());
     }
-    localStorage.setItem('todos', JSON.stringify(UI.tasks))
+    localStorage.setItem('todos', JSON.stringify(UI.tasks));
 });
 
 //Clear all form inputs
@@ -74,38 +74,38 @@ document.addEventListener('click', (e) => {
     
     //Delete task
     if(e.target.classList.contains('del')) {
-        let buttons = [...document.querySelectorAll('.del')]
-        let card = e.target.parentElement.parentElement
+        let buttons = [...document.querySelectorAll('.del')];
+        let card = e.target.parentElement.parentElement;
         card.classList.add('del-animation');
-        let index = buttons.indexOf(e.target)
+        let index = buttons.indexOf(e.target);
         setTimeout(() => {
             UI.deleteTask(index, menu);
-            localStorage.setItem('todos', JSON.stringify(UI.tasks))
-        }, 300)
+            localStorage.setItem('todos', JSON.stringify(UI.tasks));
+        }, 300);
     }
 
     //Open the details section
     if(e.target.classList.contains('details')) {
-        let btns = [...document.querySelectorAll('.details')]
+        let btns = [...document.querySelectorAll('.details')];
         let taskInfo = document.querySelector('.info');
         taskInfo.innerHTML = '';
         taskInfo.innerHTML = ` <div class="taskOption taskDetails">
         <span class="close-description"></span>
         <p class="task-description"><div >Description:</div>${UI.tasks[btns.indexOf(e.target)].description}</p>
-      </div>`
+      </div>`;
       taskInfo.classList.toggle('task-active');
-      document.querySelector('.taskOption').classList.toggle('description-active')
+      document.querySelector('.taskOption').classList.toggle('description-active');
     }
 
     if(e.target.classList.contains('close-description') || e.target.classList.contains('info')) {
-        document.querySelector('.info').classList.toggle('task-active')
+        document.querySelector('.info').classList.toggle('task-active');
     }
 
     //Edit tasks
     if(e.target.classList.contains('edit') || e.target.classList.contains('edit-task')) {
-        let btns = [...document.querySelectorAll('.edit')]
+        let btns = [...document.querySelectorAll('.edit')];
         document.querySelector('.edit-task').classList.toggle('task-active');
-        index = btns.indexOf(e.target)
+        index = btns.indexOf(e.target);
        
     }
 
@@ -116,10 +116,10 @@ document.addEventListener('click', (e) => {
        let newDate = document.querySelector('.newDate');
        
        UI.editTask(index, newTitle.value, newDescription.value, newDate.value, menu);
-       localStorage.setItem('todos', JSON.stringify(UI.tasks)) 
-      newTitle.value = ''
+       localStorage.setItem('todos', JSON.stringify(UI.tasks)); 
+      newTitle.value = '';
       newDescription.value = '';
-      newDate.value = ''
+      newDate.value = '';
     }
    
 });
@@ -144,7 +144,7 @@ document.querySelector('.today').addEventListener('click', () => {
 
 document.querySelector('.week').addEventListener('click', () => {
     UI.loadTasks(UI.week());
-    menu = 'week'
+    menu = 'week';
     jsCurrent.innerText = '{Week}';
 });
 
@@ -152,15 +152,15 @@ for(let i = 0; i < navBtns.length; i++) {
     navBtns[i].addEventListener('click', () => {
         for(let j of navBtns) {
             if(j.classList.contains('toggled')) {
-                j.classList.toggle('toggled')
+                j.classList.toggle('toggled');
             }
         }
-        navBtns[i].classList.toggle('toggled')
+        navBtns[i].classList.toggle('toggled');
     }
-    )};
+    );}
 
 
 window.addEventListener('load', () => {
     UI.getFromStorage(todos);
     UI.loadTasks(UI.tasks);
-})
+});
